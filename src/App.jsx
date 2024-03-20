@@ -3,7 +3,7 @@ import s from "./style.module.css";
 import { List } from "components/List/List";
 import { useSelector } from "react-redux";
 import { IncomeInput } from "containers/IncomeInput/IncomeInput";
-import { TotalExpense } from "components/TotalExpense/TotalExpense";
+import { TotalExpense } from "containers/TotalExpense/TotalExpense";
 import { Logo } from "components/Logo/Logo";
 
 export function App() {
