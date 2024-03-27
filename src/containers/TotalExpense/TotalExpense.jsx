@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import s from "./style.module.css";
+import style from "./style.module.css";
 
 export function TotalExpense(props) {
   const expenseList = useSelector((store) => store.EXPENSE.expenseList);
@@ -13,12 +13,12 @@ export function TotalExpense(props) {
   return (
     <div>
       <div className="row">
-        <div className={`col ${s.label}`}>Total expenses</div>
-        <div className={`col ${s.amount}`}>{totalExpense} €</div>
+        <div className={`col ${style.label}`}>Total expenses</div>
+        <div className={`col ${style.amount}`}>{totalExpense} €</div>
       </div>
       <div className="row">
-        <div className={`col ${s.label}`}>Remaining money</div>
-        <div className={`col ${s.amount}`}>{remainingMoney} €</div>
+        <div className={`col ${style.label}`}>Remaining money</div>
+        <div className={`col ${style.amount}`}>{remainingMoney} €</div>
       </div>
     </div>
   );

@@ -21,10 +21,29 @@ export const expenseSlice = createSlice({
     incrementCountActionsPerformed: (currentSlice) => {
       currentSlice.countActionsPerformed++;
     },
+    deleteExpense: (currentSlice, action) => {
+      currentSlice.expenseList = currentSlice.expenseList.filter(
+        (expense) => expense.id !== action.payload
+      );
+    },
+    deleteAll: (currentSlice) => {
+      currentSlice.expenseList = [];
+    },
   },
 });
 
-const { addExpense, setIncome, incrementCountActionsPerformed } =
-  expenseSlice.actions;
+const {
+  addExpense,
+  setIncome,
+  deleteExpense,
+  deleteAll,
+  incrementCountActionsPerformed,
+} = expenseSlice.actions;
 
-export { addExpense, setIncome, incrementCountActionsPerformed };
+export {
+  addExpense,
+  setIncome,
+  deleteExpense,
+  deleteAll,
+  incrementCountActionsPerformed,
+};

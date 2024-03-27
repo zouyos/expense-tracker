@@ -1,13 +1,13 @@
-import s from "./style.module.css";
+import style from "./style.module.css";
 
 export function Logo({ image, title, subtitle }) {
   return (
     <>
-      <div className={s.container}>
-        {image && <img className={s.img} src={image} alt="logo" />}
-        <h1 className={s.title}>{title}</h1>
+      <div className={style.container}>
+        {image && <img className={style.img} src={image} alt="logo" />}
+        <h1 className={style.title}>{title}</h1>
       </div>
-      <h2 className={s.subtitle}>{subtitle}</h2>
+      <h2 className={style.subtitle}>{subtitle}</h2>
     </>
   );
 }

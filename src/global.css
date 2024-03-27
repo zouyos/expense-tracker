@@ -10,3 +10,8 @@ table {
   border-radius: 30px;
   background-color: #ff85d1;
 }
+
+.btn-danger {
+  border-radius: 30px;
+  background-color: red;
+}

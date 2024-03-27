@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./style.module.css";
+import style from "./style.module.css";
 import { setIncome } from "store/expense/expense-slice";
 
 export function IncomeInput(props) {
@@ -13,7 +13,7 @@ export function IncomeInput(props) {
 
   return (
     <div className="row justify-content-center mb-2">
-      <div className={`col-6 ${s.label}`}>Income</div>
+      <div className={`col-6 ${style.label}`}>Income</div>
       <div className="col-6">
         <input
           onChange={updateIncome}

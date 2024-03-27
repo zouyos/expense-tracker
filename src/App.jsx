@@ -1,33 +1,48 @@
 import { ExpenseInput } from "containers/ExpenseInput/ExpenseInput";
-import s from "./style.module.css";
+import style from "./style.module.css";
 import { List } from "components/List/List";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IncomeInput } from "containers/IncomeInput/IncomeInput";
 import { TotalExpense } from "containers/TotalExpense/TotalExpense";
 import { Logo } from "components/Logo/Logo";
+import { deleteAll } from "store/expense/expense-slice";
 
 export function App() {
+  const dispatch = useDispatch();
   const expenseList = useSelector((store) => store.EXPENSE.expenseList);
 
+  function clearAll() {
+    if (window.confirm("Supprimer toutes les dépenses ?")) {
+      dispatch(deleteAll());
+    }
+  }
+
   return (
-    <div className={s.main_container}>
-      <div className={`row ${s.header}`}>
+    <div className={style.main_container}>
+      <div className={`row ${style.header}`}>
         <div className={`col-3`}>
           <Logo title="ISpent" subtitle="Track your expenses" />
         </div>
-        <div className={`col-9 ${s.income_input}`}>
+        <div className={`col-9 ${style.income_input}`}>
           <IncomeInput />
         </div>
       </div>
-      <div className={`row ${s.workspace}`}>
-        <div className={`col-12  ${s.expense_input}`}>
+      <div className={`row ${style.workspace}`}>
+        <div className={`col-12  ${style.expense_input}`}>
           <ExpenseInput />
         </div>
-        <div className={`col-11 col-md-6 col-lg-4 ${s.expense_list}`}>
+        <div className={`col-11 col-md-6 col-lg-4 ${style.expense_list}`}>
           <List items={expenseList} />
-          <div className={`col-12 ${s.expense_total}`}>
+          <div className={`col-12 ${style.expense_total}`}>
             <TotalExpense />
           </div>
+          <button
+            className={`btn btn-danger my-3 ${style.btn}`}
+            disabled={expenseList.length === 0}
+            onClick={clearAll}
+          >
+            Clear Expenses
+          </button>
         </div>
       </div>
     </div>

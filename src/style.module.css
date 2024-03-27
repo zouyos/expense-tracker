@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
+  overflow-y: hidden;
 }
 
 .header {
@@ -36,6 +37,7 @@
   flex: 8;
   align-self: center;
   margin-top: 20px;
+  overflow-y: hidden;
 }
 
 .expense_total {
