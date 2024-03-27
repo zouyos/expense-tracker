@@ -7,9 +7,6 @@ import FieldError from "components/FieldError/FieldError";
 import { v4 as uuid } from "uuid";
 
 export function ExpenseInput() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-
   const dispatch = useDispatch();
   const VALIDATORS = {
     name: (value) => {
@@ -19,6 +16,11 @@ export function ExpenseInput() {
       return ValidatorService.positive(value) || ValidatorService.number(value);
     },
   };
+
+  const [formValues, setFormValues] = useState({
+    name: "",
+    price: "",
+  });
 
   // on set les erreurs à string vide au lieu de undefined pour disable le bouton au début
   const [formErrors, setFormErrors] = useState({
@@ -33,13 +35,8 @@ export function ExpenseInput() {
     });
   }
 
-  function handleNameChange(e) {
-    setName(e.target.value);
-    validate(e.target.name, e.target.value);
-  }
-
-  function handlePriceChange(e) {
-    setPrice(e.target.value);
+  function updateFormValues(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
     validate(e.target.name, e.target.value);
   }
 
@@ -55,8 +52,10 @@ export function ExpenseInput() {
       const price = formData.get("price");
       const id = uuid();
       dispatch(addExpense({ id, name, price }));
-      setName("");
-      setPrice("");
+      setFormValues({
+        name: "",
+        price: "",
+      });
       setFormErrors({
         name: "",
         price: "",
@@ -73,8 +72,8 @@ export function ExpenseInput() {
             className="form-control"
             placeholder='Ex : "Apple"'
             name="name"
-            value={name}
-            onChange={handleNameChange}
+            value={formValues.name}
+            onChange={updateFormValues}
           />
           <FieldError msg={formErrors.name} />
         </div>
@@ -85,8 +84,8 @@ export function ExpenseInput() {
             className="form-control"
             placeholder="Ex: 3.99"
             name="price"
-            value={price}
-            onChange={handlePriceChange}
+            value={formValues.price}
+            onChange={updateFormValues}
           />
           <FieldError msg={formErrors.price} className="text-wrap" />
         </div>
