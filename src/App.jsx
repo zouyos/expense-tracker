@@ -6,6 +6,7 @@ import { IncomeInput } from "containers/IncomeInput/IncomeInput";
 import { TotalExpense } from "containers/TotalExpense/TotalExpense";
 import { Logo } from "components/Logo/Logo";
 import { deleteAll } from "store/expense/expense-slice";
+import image from "assets/images/icon.jpg";
 
 export function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export function App() {
     <div className={style.main_container}>
       <div className={`row ${style.header}`}>
         <div className={`col-3`}>
-          <Logo title="ISpent" subtitle="Track your expenses" />
+          <Logo image={image} title="ISpent" subtitle="Track your expenses" />
         </div>
         <div className={`col-9 ${style.income_input}`}>
           <IncomeInput />

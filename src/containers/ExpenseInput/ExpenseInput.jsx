@@ -45,7 +45,6 @@ export function ExpenseInput() {
       const name = formData.get("name");
       const price = formData.get("price");
       const id = uuid();
-      console.log(id);
       dispatch(addExpense({ id, name, price }));
     }
   }
