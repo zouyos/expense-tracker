@@ -13,8 +13,8 @@ export function IncomeInput(props) {
 
   return (
     <div className="row justify-content-center mb-2">
-      <div className={`col-6 ${style.label}`}>Income</div>
-      <div className="col-6">
+      <div className={`col-sm-12 col-md-6 ms-auto ${style.label}`}>Income</div>
+      <div className={`col-sm-12 col-md-6 ms-auto ${style.input}`}>
         <input
           onChange={updateIncome}
           type="number"
