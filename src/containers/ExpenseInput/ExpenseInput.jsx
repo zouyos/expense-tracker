@@ -7,6 +7,9 @@ import FieldError from "components/FieldError/FieldError";
 import { v4 as uuid } from "uuid";
 
 export function ExpenseInput() {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+
   const dispatch = useDispatch();
   const VALIDATORS = {
     name: (value) => {
@@ -30,7 +33,13 @@ export function ExpenseInput() {
     });
   }
 
-  function checkErrors(e) {
+  function handleNameChange(e) {
+    setName(e.target.value);
+    validate(e.target.name, e.target.value);
+  }
+
+  function handlePriceChange(e) {
+    setPrice(e.target.value);
     validate(e.target.name, e.target.value);
   }
 
@@ -46,6 +55,12 @@ export function ExpenseInput() {
       const price = formData.get("price");
       const id = uuid();
       dispatch(addExpense({ id, name, price }));
+      setName("");
+      setPrice("");
+      setFormErrors({
+        name: "",
+        price: "",
+      });
     }
   }
 
@@ -58,7 +73,8 @@ export function ExpenseInput() {
             className="form-control"
             placeholder='Ex : "Apple"'
             name="name"
-            onChange={checkErrors}
+            value={name}
+            onChange={handleNameChange}
           />
           <FieldError msg={formErrors.name} />
         </div>
@@ -69,7 +85,8 @@ export function ExpenseInput() {
             className="form-control"
             placeholder="Ex: 3.99"
             name="price"
-            onChange={checkErrors}
+            value={price}
+            onChange={handlePriceChange}
           />
           <FieldError msg={formErrors.price} className="text-wrap" />
         </div>
