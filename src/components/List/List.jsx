@@ -8,10 +8,8 @@ export function List({ items }) {
   const dispatch = useDispatch();
 
   function deleteExpense(index) {
-    const indexToRemove = expenseList.findIndex((item, i) => i === index);
-
     const updatedExpenseList = expenseList.filter((item, i) => {
-      return i !== indexToRemove;
+      return i !== index;
     });
     dispatch(setExpenseList(updatedExpenseList));
   }
