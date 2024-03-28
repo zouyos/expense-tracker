@@ -6,7 +6,7 @@ export function TotalExpense() {
   const income = useSelector((store) => store.EXPENSE.income);
 
   const totalExpense = expenseList.reduce((acc, i) => {
-    return acc + i.price;
+    return parseFloat((acc + i.price).toFixed(2));
   }, 0);
   const remainingMoney = parseFloat((income - totalExpense).toFixed(2));
 

@@ -16,10 +16,8 @@ export function ExpenseInput() {
     },
   };
 
-  const [formValues, setFormValues] = useState({
-    name: "",
-    price: "",
-  });
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
 
   // on set les erreurs à string vide au lieu de undefined pour disable le bouton au début
   const [formErrors, setFormErrors] = useState({
@@ -34,8 +32,17 @@ export function ExpenseInput() {
     });
   }
 
-  function updateFormValues(e) {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  function handleNameChange(e) {
+    setName(e.target.value);
+    validate(e.target.name, e.target.value);
+  }
+
+  function handlePriceChange(e) {
+    const inputValue = e.target.value;
+    const regex = /^\d*\.?\d{0,2}$/;
+    if (regex.test(inputValue)) {
+      setPrice(inputValue);
+    }
     validate(e.target.name, e.target.value);
   }
 
@@ -50,10 +57,8 @@ export function ExpenseInput() {
       const name = formData.get("name");
       const price = parseFloat(formData.get("price"));
       dispatch(addExpense({ name, price }));
-      setFormValues({
-        name: "",
-        price: "",
-      });
+      setName("");
+      setPrice("");
       setFormErrors({
         name: "",
         price: "",
@@ -68,10 +73,10 @@ export function ExpenseInput() {
           <input
             type="text"
             className="form-control"
-            placeholder='Ex : "Apple"'
+            placeholder='Ex: "Apple"'
             name="name"
-            value={formValues.name}
-            onChange={updateFormValues}
+            value={name}
+            onChange={handleNameChange}
           />
           <FieldError msg={formErrors.name} />
         </div>
@@ -82,8 +87,8 @@ export function ExpenseInput() {
             className="form-control"
             placeholder="Ex: 3.99"
             name="price"
-            value={formValues.price}
-            onChange={updateFormValues}
+            value={price}
+            onChange={handlePriceChange}
           />
           <FieldError msg={formErrors.price} className="text-wrap" />
         </div>
