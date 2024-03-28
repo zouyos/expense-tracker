@@ -4,7 +4,6 @@ import { addExpense } from "store/expense/expense-slice";
 import { ValidatorService } from "services/form-validators";
 import { useState } from "react";
 import FieldError from "components/FieldError/FieldError";
-import { v4 as uuid } from "uuid";
 
 export function ExpenseInput() {
   const dispatch = useDispatch();
@@ -49,9 +48,8 @@ export function ExpenseInput() {
     const formData = new FormData(e.currentTarget);
     if (!hasErrors()) {
       const name = formData.get("name");
-      const price = formData.get("price");
-      const id = uuid();
-      dispatch(addExpense({ id, name, price }));
+      const price = parseFloat(formData.get("price"));
+      dispatch(addExpense({ name, price }));
       setFormValues({
         name: "",
         price: "",

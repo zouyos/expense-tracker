@@ -1,7 +1,9 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import {
   addExpense,
+  deleteAll,
   incrementCountActionsPerformed,
+  setExpenseList,
   setIncome,
 } from "store/expense/expense-slice";
 export const loggerMiddleWare = createListenerMiddleware();
@@ -15,7 +17,7 @@ loggerMiddleWare.startListening({
   //     action.type === "expenseSlice/setIncome"
   //   );
   // },
-  matcher: isAnyOf(addExpense, setIncome),
+  matcher: isAnyOf(addExpense, setIncome, setExpenseList, deleteAll),
   effect: async (action, listenerAPI) => {
     console.log(action);
     // listenerAPI nous donne accès à dispatch

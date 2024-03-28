@@ -11,9 +11,9 @@ export function IncomeInput() {
   function updateIncome(e) {
     const inputValue = e.target.value;
     const regex = /^\d*\.?\d{0,2}$/;
-    if (inputValue === "" || regex.test(inputValue)) {
+    if (regex.test(inputValue)) {
       setValue(parseFloat(inputValue));
-      dispatch(setIncome(inputValue === "" ? 0 : inputValue));
+      dispatch(setIncome(inputValue === "" ? 0 : parseFloat(inputValue)));
     }
   }
 
@@ -26,7 +26,6 @@ export function IncomeInput() {
           type="number"
           className="form-control"
           placeholder="Ex: 3000"
-          defaultValue={income}
           value={value}
         />
       </div>

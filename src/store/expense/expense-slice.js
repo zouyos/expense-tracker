@@ -12,19 +12,16 @@ export const expenseSlice = createSlice({
     addExpense: (currentSlice, action) => {
       currentSlice.expenseList.push({
         ...action.payload,
-        price: parseFloat(action.payload.price),
       });
     },
     setIncome: (currentSlice, action) => {
-      currentSlice.income = parseFloat(action.payload);
+      currentSlice.income = action.payload;
     },
     incrementCountActionsPerformed: (currentSlice) => {
       currentSlice.countActionsPerformed++;
     },
-    deleteExpense: (currentSlice, action) => {
-      currentSlice.expenseList = currentSlice.expenseList.filter(
-        (expense) => expense.id !== action.payload
-      );
+    setExpenseList: (currentSlice, action) => {
+      currentSlice.expenseList = action.payload;
     },
     deleteAll: (currentSlice) => {
       currentSlice.expenseList = [];
@@ -35,7 +32,7 @@ export const expenseSlice = createSlice({
 const {
   addExpense,
   setIncome,
-  deleteExpense,
+  setExpenseList,
   deleteAll,
   incrementCountActionsPerformed,
 } = expenseSlice.actions;
@@ -43,7 +40,7 @@ const {
 export {
   addExpense,
   setIncome,
-  deleteExpense,
+  setExpenseList,
   deleteAll,
   incrementCountActionsPerformed,
 };
