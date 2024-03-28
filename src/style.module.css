@@ -1,9 +1,6 @@
 .main_container {
   font-family: Roboto;
   color: white;
-  /* background: url(assets/images/background.jpg) no-repeat;
-  background-size: cover;
-  background-color: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); */
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
     url("assets/images/background.jpg") no-repeat center / cover;
   height: 100vh;

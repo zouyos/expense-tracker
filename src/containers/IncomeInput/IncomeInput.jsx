@@ -1,14 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import style from "./style.module.css";
 import { setIncome } from "store/expense/expense-slice";
+import { useState } from "react";
 
-export function IncomeInput(props) {
+export function IncomeInput() {
   const dispatch = useDispatch();
   const income = useSelector((store) => store.EXPENSE.income);
+  const [value, setValue] = useState(income);
 
   function updateIncome(e) {
-    const income = e.target.value;
-    dispatch(setIncome(income));
+    const inputValue = e.target.value;
+    const regex = /^\d*\.?\d{0,2}$/;
+    if (inputValue === "" || regex.test(inputValue)) {
+      setValue(parseFloat(inputValue));
+      dispatch(setIncome(inputValue === "" ? 0 : inputValue));
+    }
   }
 
   return (
@@ -21,6 +27,7 @@ export function IncomeInput(props) {
           className="form-control"
           placeholder="Ex: 3000"
           defaultValue={income}
+          value={value}
         />
       </div>
     </div>

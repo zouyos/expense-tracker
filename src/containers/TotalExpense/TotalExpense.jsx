@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 import style from "./style.module.css";
 
-export function TotalExpense(props) {
+export function TotalExpense() {
   const expenseList = useSelector((store) => store.EXPENSE.expenseList);
   const income = useSelector((store) => store.EXPENSE.income);
 
   const totalExpense = expenseList.reduce((acc, i) => {
     return acc + i.price;
   }, 0);
-  const remainingMoney = income - totalExpense;
+  const remainingMoney = parseFloat((income - totalExpense).toFixed(2));
 
   return (
     <div>
