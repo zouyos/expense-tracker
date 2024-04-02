@@ -6,7 +6,7 @@ import { IncomeInput } from "containers/IncomeInput/IncomeInput";
 import { TotalExpense } from "containers/TotalExpense/TotalExpense";
 import { Logo } from "components/Logo/Logo";
 import { deleteAll } from "store/expense/expense-slice";
-import image from "assets/images/icon.jpg";
+import image from "assets/images/logo.jpg";
 
 export function App() {
   const dispatch = useDispatch();
