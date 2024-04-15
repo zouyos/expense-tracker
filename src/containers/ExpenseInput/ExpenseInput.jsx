@@ -16,8 +16,10 @@ export function ExpenseInput() {
     },
   };
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    price: "",
+  });
 
   // on set les erreurs à string vide au lieu de undefined pour disable le bouton au début
   const [formErrors, setFormErrors] = useState({
@@ -32,18 +34,19 @@ export function ExpenseInput() {
     });
   }
 
-  function handleNameChange(e) {
-    setName(e.target.value);
-    validate(e.target.name, e.target.value);
-  }
-
-  function handlePriceChange(e) {
-    const inputValue = e.target.value;
-    const regex = /^\d*\.?\d{0,2}$/;
-    if (regex.test(inputValue)) {
-      setPrice(inputValue);
+  function updateFormValues(e) {
+    let inputValue = e.target.value;
+    if (e.target.name === "price") {
+      if (inputValue === "") {
+        inputValue = 0;
+      }
+      const regex = /^\d*\.?\d{0,2}$/;
+      if (!regex.test(inputValue)) {
+        inputValue = inputValue.slice(0, -1);
+      }
     }
-    validate(e.target.name, e.target.value);
+    setFormValues({ ...formValues, [e.target.name]: inputValue });
+    validate(e.target.name, inputValue);
   }
 
   function hasErrors() {
@@ -57,8 +60,10 @@ export function ExpenseInput() {
       const name = formData.get("name");
       const price = parseFloat(formData.get("price"));
       dispatch(addExpense({ name, price }));
-      setName("");
-      setPrice("");
+      setFormValues({
+        name: "",
+        price: "",
+      });
       setFormErrors({
         name: "",
         price: "",
@@ -75,20 +80,23 @@ export function ExpenseInput() {
             className="form-control"
             placeholder='Ex: "Apple"'
             name="name"
-            value={name}
-            onChange={handleNameChange}
+            value={formValues.name}
+            onChange={updateFormValues}
+            data-testid="name-input"
           />
           <FieldError msg={formErrors.name} />
         </div>
         <div className="col-12 col-sm-2 col-md-4 col-lg-4 mb-4">
           <input
             type="number"
+            min={0}
             step="0.01"
             className="form-control"
             placeholder="Ex: 3.99"
             name="price"
-            value={price}
-            onChange={handlePriceChange}
+            value={formValues.price}
+            onChange={updateFormValues}
+            data-testid="price-input"
           />
           <FieldError msg={formErrors.price} className="text-wrap" />
         </div>

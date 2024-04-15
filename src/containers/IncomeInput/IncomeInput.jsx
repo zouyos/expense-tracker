@@ -9,12 +9,13 @@ export function IncomeInput() {
   const [value, setValue] = useState(income);
 
   function updateIncome(e) {
-    const inputValue = e.target.value;
+    let inputValue = e.target.value === "" ? 0 : e.target.value;
     const regex = /^\d*\.?\d{0,2}$/;
-    if (regex.test(inputValue)) {
-      setValue(parseFloat(inputValue));
-      dispatch(setIncome(inputValue === "" ? 0 : parseFloat(inputValue)));
+    if (!regex.test(inputValue)) {
+      inputValue = inputValue.slice(0, -1);
     }
+    setValue(parseFloat(inputValue));
+    dispatch(setIncome(inputValue));
   }
 
   return (
@@ -27,6 +28,7 @@ export function IncomeInput() {
           className="form-control"
           placeholder="Ex: 3000"
           value={value}
+          data-testid="incomeInput"
         />
       </div>
     </div>
