@@ -37,9 +37,6 @@ export function ExpenseInput() {
   function updateFormValues(e) {
     let inputValue = e.target.value;
     if (e.target.name === "price") {
-      if (inputValue === "") {
-        inputValue = 0;
-      }
       const regex = /^\d*\.?\d{0,2}$/;
       if (!regex.test(inputValue)) {
         inputValue = inputValue.slice(0, -1);
