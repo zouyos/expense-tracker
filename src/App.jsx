@@ -24,7 +24,7 @@ export function App() {
         <div>
           <Logo image={image} title="ISpent" subtitle="Track your expenses" />
         </div>
-        <div className={`mb-3 ${style.income_input}`}>
+        <div className={style.income_input}>
           <IncomeInput />
         </div>
       </div>

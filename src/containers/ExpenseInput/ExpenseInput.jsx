@@ -101,7 +101,7 @@ export function ExpenseInput() {
         <div className="col-12 col-sm-2 col-md-4 col-lg-4 mb-3">
           <button
             type="submit"
-            className={`btn btn-primary ${style.btn}`}
+            className={`btn btn-success ${style.btn}`}
             disabled={hasErrors()}
           >
             Add
