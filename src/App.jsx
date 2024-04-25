@@ -20,11 +20,11 @@ export function App() {
 
   return (
     <div className={style.main_container}>
-      <div className={`row ${style.header}`}>
-        <div className={`col-3`}>
+      <div className={style.header}>
+        <div>
           <Logo image={image} title="ISpent" subtitle="Track your expenses" />
         </div>
-        <div className={`col-9 ${style.income_input}`}>
+        <div className={`mb-3 ${style.income_input}`}>
           <IncomeInput />
         </div>
       </div>
