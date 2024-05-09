@@ -12,11 +12,11 @@ export function TotalExpense() {
 
   return (
     <div>
-      <div className="row">
+      <div className="row my-2">
         <div className={`col ${style.label}`}>Total expenses</div>
         <div className={`col ${style.amount}`}>{totalExpense} €</div>
       </div>
-      <div className="row">
+      <div className="row my-2">
         <div className={`col ${style.label}`}>Remaining money</div>
         <div className={`col ${style.amount}`}>{remainingMoney} €</div>
       </div>

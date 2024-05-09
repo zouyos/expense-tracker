@@ -20,7 +20,9 @@ export function IncomeInput() {
 
   return (
     <div className="row justify-content-center mb-4">
-      <div className={`col-sm-12 col-md-6 ms-auto ${style.label}`}>Income</div>
+      <div className={`col-sm-12 col-md-6 ms-auto mb-2 me-2 ${style.label}`}>
+        Income
+      </div>
       <div className={`col-sm-12 col-md-6 ms-auto text-right ${style.input}`}>
         <input
           onChange={updateIncome}
