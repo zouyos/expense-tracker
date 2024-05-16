@@ -14,19 +14,21 @@ export function List({ items }) {
   }
 
   return (
-    <table className="table table-hover table-borderless">
-      <tbody>
-        {items.map((item, index) => {
-          return (
-            <ListItem
-              key={item.name + index}
-              item={item}
-              onTrashClick={deleteExpense}
-              index={index}
-            />
-          );
-        })}
-      </tbody>
-    </table>
+    <div>
+      <table className="table table-hover table-borderless">
+        <tbody>
+          {items.map((item, index) => {
+            return (
+              <ListItem
+                key={item.name + index}
+                item={item}
+                onTrashClick={deleteExpense}
+                index={index}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
