@@ -29,13 +29,13 @@ export function App() {
         </div>
       </div>
       <div className={`row ${style.workspace}`}>
-        <div className={`col-12  ${style.expense_input}`}>
+        <div className={`col-12 ${style.expense_input}`}>
           <ExpenseInput />
         </div>
         <div className={`col-11 col-md-6 col-lg-4 ${style.expense_list}`}>
           <List items={expenseList} />
         </div>
-        <div className={`col-12 ${style.expense_total}`}>
+        <div className={`col-12 col-md-6 col-lg-4 ${style.expense_total}`}>
           <TotalExpense />
           <button
             className={`btn btn-danger my-1 ${style.btn}`}
