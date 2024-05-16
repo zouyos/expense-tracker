@@ -34,9 +34,9 @@ export function App() {
         </div>
         <div className={`col-11 col-md-6 col-lg-4 ${style.expense_list}`}>
           <List items={expenseList} />
-          <div className={`col-12 ${style.expense_total}`}>
-            <TotalExpense />
-          </div>
+        </div>
+        <div className={`col-12 ${style.expense_total}`}>
+          <TotalExpense />
           <button
             className={`btn btn-danger mt-3 mb-2 ${style.btn}`}
             disabled={expenseList.length === 0}
