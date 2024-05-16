@@ -38,7 +38,7 @@ export function App() {
         <div className={`col-12 ${style.expense_total}`}>
           <TotalExpense />
           <button
-            className={`btn btn-danger mt-3 mb-2 ${style.btn}`}
+            className={`btn btn-danger my-1 ${style.btn}`}
             disabled={expenseList.length === 0}
             onClick={clearAll}
           >
