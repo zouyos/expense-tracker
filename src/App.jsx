@@ -22,7 +22,7 @@ export function App() {
     <div className={style.main_container}>
       <div className={style.header}>
         <div>
-          <Logo image={image} title="ISpent" subtitle="Track your expenses" />
+          <Logo image={image} title='ISpent' subtitle='Track your expenses' />
         </div>
         <div className={style.income_input}>
           <IncomeInput />
@@ -38,7 +38,7 @@ export function App() {
         <div className={`col-12 col-md-6 col-lg-4 ${style.expense_total}`}>
           <TotalExpense />
           <button
-            className={`btn btn-danger my-1 ${style.btn}`}
+            className={`btn btn-danger my-2 ${style.btn}`}
             disabled={expenseList.length === 0}
             onClick={clearAll}
           >
